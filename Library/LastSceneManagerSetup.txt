@@ -1,4 +1,16 @@
 sceneSetups:
-- path: Assets/SamplesResources/Scenes/StartARcamera.unity
+- path: Assets/H-scenes/0-Splash.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/H-scenes/1-Menu.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/H-scenes/2-Loading.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/H-scenes/3-UserDefinedTargets.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/H-scenes/StartARcamera.unity
+  isLoaded: 0
+  isActive: 0
