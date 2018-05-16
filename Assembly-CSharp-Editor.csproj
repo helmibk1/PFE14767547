@@ -51,20 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_MK\MKGlowFree\Editor\MKGlowFreeEditor.cs" />
      <Compile Include="Assets\Common\Editor\ConfigurePlayerSettings.cs" />
-     <Compile Include="Assets\Editor\Vuforia\SampleOrientationSetter.cs" />
-     <Compile Include="Assets\SamplesResources\SceneAssets\UserDefinedTargets\Scripts\Editor\UDTEventHandlerEditor.cs" />
-     <Compile Include="Assets\SamplesResources\VuforiaSamplesUI\Scripts\Editor\OptionsConfigEditor.cs" />
+     <Compile Include="Assets\GlowLines\MKGlowFree\Editor\MKGlowFreeEditor.cs" />
      <Compile Include="Assets\Vuforia\Editor\Scripts\OpenSourceInitializer.cs" />
-     <None Include="Assets\Editor\Vuforia\VuforiaMars_ModelTarget\authoringinfo.xml" />
-     <None Include="Assets\Editor\Vuforia\VuforiaMars_VuMark\authoringinfo.xml" />
-     <None Include="Assets\Editor\Vuforia\Emulator\VuforiaEmulator.xml" />
-     <None Include="Assets\Editor\Vuforia\TargetsetData\VuforiaMars_Object_info.xml" />
-     <None Include="Assets\Editor\Vuforia\ForPrint\ModelTarget\readme_3dprint.txt" />
-     <None Include="Assets\Editor\Vuforia\CylinderTargetTextures\VuforiaMars_Images\authoringinfo.xml" />
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Users/helmi2/Desktop/Work/PFE/Application Android pour calculer les dimensions/Application Android pour calculer les dimensions/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>C:/Users/helmi2/Desktop/Work/PFE/Application Android pour calculer les dimensions/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions.Editor">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
