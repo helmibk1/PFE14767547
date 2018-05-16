@@ -1,7 +1,7 @@
 sceneSetups:
 - path: Assets/SamplesResources/Scenes/0-Splash.unity
-  isLoaded: 0
-  isActive: 0
+  isLoaded: 1
+  isActive: 1
 - path: Assets/SamplesResources/Scenes/1-Menu.unity
   isLoaded: 0
   isActive: 0
@@ -9,5 +9,5 @@ sceneSetups:
   isLoaded: 0
   isActive: 0
 - path: Assets/SamplesResources/Scenes/StartARcamera.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0

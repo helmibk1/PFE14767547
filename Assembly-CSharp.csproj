@@ -51,31 +51,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_MK\MKGlowFree\MKGlowFree.cs" />
      <Compile Include="Assets\Common\CameraSettings.cs" />
-     <Compile Include="Assets\Common\FrameRateSettings.cs" />
-     <Compile Include="Assets\Common\InitErrorHandler.cs" />
      <Compile Include="Assets\Common\MenuAnimator.cs" />
      <Compile Include="Assets\Common\MenuOptions.cs" />
      <Compile Include="Assets\Common\SplashAbout\AboutScreen.cs" />
-     <Compile Include="Assets\Common\SplashAbout\AsyncSceneLoader.cs" />
      <Compile Include="Assets\Common\SplashAbout\LoadingScreen.cs" />
      <Compile Include="Assets\Common\TapHandler.cs" />
      <Compile Include="Assets\Common\TrackableSettings.cs" />
-     <Compile Include="Assets\SamplesResources\SceneAssets\UserDefinedTargets\Scripts\FrameQualityMeter.cs" />
-     <Compile Include="Assets\SamplesResources\SceneAssets\UserDefinedTargets\Scripts\QualityDialog.cs" />
-     <Compile Include="Assets\SamplesResources\SceneAssets\UserDefinedTargets\Scripts\UDTEventHandler.cs" />
+     <Compile Include="Assets\H-Scripts\ARcamera.cs" />
+     <Compile Include="Assets\H-Scripts\AsyncSceneLoader.cs" />
+     <Compile Include="Assets\H-Scripts\DefaultTrackableEventHandler.cs" />
+     <Compile Include="Assets\H-Scripts\DrawLines.cs" />
+     <Compile Include="Assets\H-Scripts\FrameQualityMeter.cs" />
+     <Compile Include="Assets\H-Scripts\FrameRateSettings.cs" />
+     <Compile Include="Assets\H-Scripts\InitErrorHandler.cs" />
+     <Compile Include="Assets\H-Scripts\MeasureDistance.cs" />
+     <Compile Include="Assets\H-Scripts\MKGlowFree.cs" />
+     <Compile Include="Assets\H-Scripts\QualityDialog.cs" />
+     <Compile Include="Assets\H-Scripts\SamplesLoadingScreen.cs" />
+     <Compile Include="Assets\H-Scripts\SamplesMainMenu.cs" />
+     <Compile Include="Assets\H-Scripts\SamplesNavigationHandler.cs" />
+     <Compile Include="Assets\H-Scripts\SharingResult.cs" />
+     <Compile Include="Assets\H-Scripts\UDTEventHandler.cs" />
      <Compile Include="Assets\SamplesResources\VuforiaSamplesUI\Scripts\OptionsConfig.cs" />
-     <Compile Include="Assets\SamplesResources\VuforiaSamplesUI\Scripts\SamplesLoadingScreen.cs" />
-     <Compile Include="Assets\SamplesResources\VuforiaSamplesUI\Scripts\SamplesMainMenu.cs" />
-     <Compile Include="Assets\SamplesResources\VuforiaSamplesUI\Scripts\SamplesNavigationHandler.cs" />
      <Compile Include="Assets\SamplesResources\VuforiaSamplesUI\Scripts\SamplesTapHandler.cs" />
-     <Compile Include="Assets\Scripts\ARcamera.cs" />
-     <Compile Include="Assets\Scripts\DrawLines.cs" />
-     <Compile Include="Assets\Scripts\MeasureDistance.cs" />
-     <Compile Include="Assets\Scripts\SharingResult.cs" />
      <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
-     <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />
      <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-Glossy.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shader\Render\MKGlowBlurInc.cginc" />
