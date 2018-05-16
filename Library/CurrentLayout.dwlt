@@ -67,8 +67,8 @@ MonoBehaviour:
     y: 0
     width: 340
     height: 226
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -184,10 +184,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 713, y: 492}
-  m_MaxSize: {x: 18008, y: 14042}
+  m_MinSize: {x: 713, y: 471}
+  m_MaxSize: {x: 18008, y: 14021}
   vertical: 0
-  controlID: 115
+  controlID: 57
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -208,10 +208,10 @@ MonoBehaviour:
     y: 0
     width: 340
     height: 635
-  m_MinSize: {x: 234, y: 492}
-  m_MaxSize: {x: 10004, y: 14042}
+  m_MinSize: {x: 234, y: 471}
+  m_MaxSize: {x: 10004, y: 14021}
   vertical: 1
-  controlID: 88
+  controlID: 10
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -480,9 +480,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 06300000
     m_LastClickedID: 0
-    m_ExpandedIDs: 44fbffff5efbffff60fbffff62fbffff6efbffff8cfbffff94fbffff96fbffff00000000d02c0000142d0000282d00002e2d00003e310000c631000076320000ec3300002834000030340000
+    m_ExpandedIDs: 3ef5ffff40f5ffff44f5ffff00000000f6300000f83100003e320000b03200004c340000a4340000aa340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -502,7 +502,8 @@ MonoBehaviour:
     m_SearchString: 
   m_ExpandedScenes:
   - 0-Splash
-  - 1-Menu
+  - 2-Loading
+  - StartARcamera
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -545,20 +546,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/SamplesResources/SceneAssets/UserDefinedTargets/Scripts/Editor
+    - Assets/Vuforia
   m_ViewMode: 0
   m_StartGridSize: 67
-  m_LastFolders:
-  - Assets
+  m_LastFolders: []
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\helmi2\Desktop\Work\PFE\Application Android pour calculer
-    les dimensions\Application Android pour calculer les dimensions
+    les dimensions
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 86290000
     m_LastClickedID: 10630
-    m_ExpandedIDs: 00000000e80700003a080000162a0000262a0000342a00006a2a0000d62a0000ea2a0000fe2a0000282b00002e2b0000422b00005e2b0000aa2b0000bc2b0000002c00001c2c00003a2c00004c2c00005c2c0000662c0000882f00008a2f00008c2f00008e2f0000902f0000922f0000
+    m_ExpandedIDs: 0000000004070000e80700003a0800001a2b0000e02d0000b02e0000cc2e0000ce2e0000d62e0000e22e00003e2f00004c2f0000502f0000602f00006c2f0000802f0000f42f000010300000123000002a300000423000005c30000074300000823000003431000036310000383100003a3100003c3100003e310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -586,7 +586,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000004070000e80700003a080000162a0000342a0000362a0000402a0000562a0000962a0000d62a0000ea2a0000ee2a0000fe2a0000102b0000282b0000aa2b0000c62b0000ca2b0000e22b0000fe2b00001c2c0000202c00003a2c00004c2c0000882f00008a2f00008c2f00008e2f0000902f0000922f0000
+    m_ExpandedIDs: 0000000004070000e80700003a0800001a2b0000e02d00000e2e0000b02e0000be2e0000ce2e0000d02e0000d62e0000e22e0000042f0000342f00003e2f00004c2f0000502f0000602f00006c2f00007a2f00007e2f0000a42f0000d42f0000ee2f0000f42f000010300000123000002a30000042300000743000009c3000003431000036310000383100003a3100003c3100003e310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: fe25000086070000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
