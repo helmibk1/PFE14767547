@@ -25,7 +25,7 @@ public class SamplesMainMenu : MonoBehaviour
 	public bool isAboutScreenVisible;
 
 	// initialize static enum with one of the items
-	public static MenuItem menuItem = MenuItem.StartARcamera;
+	public MenuItem menuItem = MenuItem.StartARcamera;
 
 	public const string MenuScene = "1-Menu";
 	public const string LoadingScene = "2-Loading";

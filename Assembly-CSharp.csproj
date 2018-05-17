@@ -51,28 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ARcamera.cs" />
-     <Compile Include="Assets\Scripts\CameraSettings.cs" />
-     <Compile Include="Assets\Scripts\DefaultTrackableEventHandler.cs" />
-     <Compile Include="Assets\Scripts\DrawLines.cs" />
-     <Compile Include="Assets\Scripts\FrameQualityMeter.cs" />
-     <Compile Include="Assets\Scripts\FrameRateSettings.cs" />
-     <Compile Include="Assets\Scripts\InitErrorHandler.cs" />
-     <Compile Include="Assets\Scripts\LoadingScreen.cs" />
-     <Compile Include="Assets\Scripts\MenuAnimator.cs" />
-     <Compile Include="Assets\Scripts\MenuOptions.cs" />
-     <Compile Include="Assets\Scripts\MKGlowFree.cs" />
-     <Compile Include="Assets\Scripts\OptionsConfig.cs" />
-     <Compile Include="Assets\Scripts\QualityDialog.cs" />
-     <Compile Include="Assets\Scripts\SamplesLoadingScreen.cs" />
-     <Compile Include="Assets\Scripts\SamplesTapHandler.cs" />
+     <Compile Include="Assets\GlowLines\MKGlowFree\MKGlowFree.cs" />
+     <Compile Include="Assets\Scripts\SamplesNavigationHandler.cs" />
      <Compile Include="Assets\Scripts\Scene1\AsyncSceneLoader.cs" />
      <Compile Include="Assets\Scripts\Scene2\SamplesMainMenu.cs" />
-     <Compile Include="Assets\Scripts\Scene2\SamplesNavigationHandler.cs" />
-     <Compile Include="Assets\Scripts\SharingResult.cs" />
-     <Compile Include="Assets\Scripts\TapHandler.cs" />
-     <Compile Include="Assets\Scripts\TrackableSettings.cs" />
-     <Compile Include="Assets\Scripts\UDTEventHandler.cs" />
+     <Compile Include="Assets\Scripts\Scene3\SamplesLoadingScreen.cs" />
+     <Compile Include="Assets\Scripts\Scene4\ARcamera.cs" />
+     <Compile Include="Assets\Scripts\Scene4\DrawLines.cs" />
+     <Compile Include="Assets\Scripts\Scene4\FrameQualityMeter.cs" />
+     <Compile Include="Assets\Scripts\Scene4\QualityDialog.cs" />
+     <Compile Include="Assets\Scripts\Scene4\SharingResult.cs" />
+     <Compile Include="Assets\Scripts\UserDefinedTarget\DefaultTrackableEventHandler.cs" />
+     <Compile Include="Assets\Scripts\UserDefinedTarget\UDTEventHandler.cs" />
      <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
      <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
      <None Include="Assets\GlowLines\MKGlowFree\Shader\Variants_SelectiveMode\Illumin\MK_Illumin-Glossy.shader" />

@@ -697,7 +697,6 @@ GameObject:
   m_Component:
   - component: {fileID: 708239516}
   - component: {fileID: 708239518}
-  - component: {fileID: 708239517}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -721,18 +720,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &708239517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11402820, guid: 24175ecc27f6f4bb090fa48e95bf175a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 708239515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911feb003f67c4fb79a75b51b493d03d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &708239518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,6 +737,7 @@ MonoBehaviour:
   AboutDescription: {fileID: 1799602617}
   AboutButton: {fileID: 1902789101}
   isAboutScreenVisible: 0
+  menuItem: 0
 --- !u!1 &902592764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,7 +2439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
   m_SizeDelta: {x: -32, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1799602617
