@@ -749,6 +749,7 @@ MonoBehaviour:
   AboutTitle: {fileID: 2108330732}
   AboutDescription: {fileID: 1799602617}
   AboutButton: {fileID: 1902789101}
+  isAboutScreenVisible: 0
 --- !u!1 &902592764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,7 +1328,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 708239517}
+      - m_Target: {fileID: 708239518}
         m_MethodName: OnStartAR
         m_Mode: 1
         m_Arguments:
@@ -2450,7 +2451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -32, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1799602617

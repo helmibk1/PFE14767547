@@ -4,15 +4,12 @@ using UnityEngine.UI;
 public class SamplesLoadingScreen : MonoBehaviour
 {
 
-    #region PRIVATE_MEMBER_VARIABLES
+   
 
     bool mChangeLevel = true;
     RawImage mUISpinner;
 
-    #endregion // PRIVATE_MEMBER_VARIABLES
 
-
-    #region MONOBEHAVIOUR_METHODS
 
     void Start()
     {
@@ -32,19 +29,15 @@ public class SamplesLoadingScreen : MonoBehaviour
             mChangeLevel = false;
         }
     }
+		
 
-    #endregion // MONOBEHAVIOUR_METHODS
-
-
-    #region PRIVATE_METHODS
 
     void LoadNextSceneAsync()
     {
-        string sceneName = SamplesMainMenu.GetSceneToLoad();
+		string sceneName = "StartARcamera";
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
     }
-
-    #endregion // PRIVATE_METHODS
+		
 
 }
