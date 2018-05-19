@@ -9,6 +9,8 @@ public class MeasureDistance : MonoBehaviour
 	private float distance;
 	public Text distanceText;
 
+
+	//called in SetQuality to change UI bar color
     void SetMeter(Color low, Color med, Color high)
     {
         if (LowMedHigh.Length == 3)
@@ -22,7 +24,7 @@ public class MeasureDistance : MonoBehaviour
         }
     }
 
-
+	//called in UDTEventHandler to change meter colors based on frame quality
     public void SetQuality(Vuforia.ImageTargetBuilder.FrameQuality quality)
     {
         switch (quality)
