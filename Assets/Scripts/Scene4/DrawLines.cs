@@ -30,7 +30,7 @@ public class DrawLines : MonoBehaviour {
 				var lineEndPoint = GetMouseCameraPoint ();
 
 			var lineRender = Instantiate (lineDraw);
-			test = GameObject.Find("UserDefinedTarget-1");
+			test = GameObject.Find("USERTARGET");
 			lineRender.transform.parent = test.transform;
 
 				lineRender.material = LineMatrial;

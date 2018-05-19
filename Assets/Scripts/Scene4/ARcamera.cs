@@ -20,33 +20,34 @@ public class ARcamera : MonoBehaviour
 		vuforia.RegisterOnPauseCallback(OnPaused);
 	}
 
-
-
-	// open flash
-	public bool IsFlashTorchEnabled()
+	//enable autofocus when vuforia start 
+	private void OnVuforiaStarted()
 	{
-		return mFlashTorchEnabled;
+		mVuforiaStarted = true;
+		// Try enabling continuous autofocus
+		SwitchAutofocus(true);
 	}
 
-	public void SwitchFlashTorch(bool ON)
+	//handle autofocus when vuforia paused
+	private void OnPaused(bool paused)
 	{
-		if (CameraDevice.Instance.SetFlashTorchMode(ON))
+		bool appResumed = !paused;
+		if (appResumed && mVuforiaStarted)
 		{
-			Debug.Log("Successfully turned flash " + ON);
-			mFlashTorchEnabled = ON;
+			// Restore original focus mode when app is resumed
+			if (mAutofocusEnabled)
+				CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
+			else
+				CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_NORMAL);
 		}
 		else
 		{
-			Debug.Log("Failed to set the flash torch " + ON);
+			// Set the torch flag to false on pause (because the flash torch is switched off by the OS automatically)
 			mFlashTorchEnabled = false;
 		}
 	}
-	//set autofocus
-	public bool IsAutofocusEnabled()
-	{
-		return mAutofocusEnabled;
-	}
 
+	//set autofocus
 	public void SwitchAutofocus(bool ON)
 	{
 		if (ON)
@@ -71,7 +72,22 @@ public class ARcamera : MonoBehaviour
 			CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_NORMAL);
 		}
 	}
-		
+
+	//open flash torch
+	public void SwitchFlashTorch(bool ON)
+	{
+		if (CameraDevice.Instance.SetFlashTorchMode(ON))
+		{
+			Debug.Log("Successfully turned flash " + ON);
+			mFlashTorchEnabled = ON;
+		}
+		else
+		{
+			Debug.Log("Failed to set the flash torch " + ON);
+			mFlashTorchEnabled = false;
+		}
+	}
+
 	public void SelectCamera(CameraDevice.CameraDirection camDir)
 	{
 		if (RestartCamera(camDir))
@@ -82,12 +98,7 @@ public class ARcamera : MonoBehaviour
 			mFlashTorchEnabled = false;
 		}
 	}
-
-	public bool IsFrontCameraActive()
-	{
-		return (mActiveDirection == CameraDevice.CameraDirection.CAMERA_FRONT);
-	}
-
+		
 
 	public bool RestartCamera(CameraDevice.CameraDirection direction)
 	{
@@ -125,30 +136,7 @@ public class ARcamera : MonoBehaviour
 
 
 
-	private void OnVuforiaStarted()
-	{
-		mVuforiaStarted = true;
-		// Try enabling continuous autofocus
-		SwitchAutofocus(true);
-	}
 
-	private void OnPaused(bool paused)
-	{
-		bool appResumed = !paused;
-		if (appResumed && mVuforiaStarted)
-		{
-			// Restore original focus mode when app is resumed
-			if (mAutofocusEnabled)
-				CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
-			else
-				CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_NORMAL);
-		}
-		else
-		{
-			// Set the torch flag to false on pause (because the flash torch is switched off by the OS automatically)
-			mFlashTorchEnabled = false;
-		}
-	}
 
 
 

@@ -58,7 +58,7 @@
      <Compile Include="Assets\Scripts\Scene4\ARcamera.cs" />
      <Compile Include="Assets\Scripts\Scene4\DrawLines.cs" />
      <Compile Include="Assets\Scripts\Scene4\EscapeButton.cs" />
-     <Compile Include="Assets\Scripts\Scene4\FrameQualityMeter.cs" />
+     <Compile Include="Assets\Scripts\Scene4\MeasureDistance.cs" />
      <Compile Include="Assets\Scripts\UserDefinedTarget\DefaultTrackableEventHandler.cs" />
      <Compile Include="Assets\Scripts\UserDefinedTarget\QualityDialog.cs" />
      <Compile Include="Assets\Scripts\UserDefinedTarget\UDTEventHandler.cs" />

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class FrameQualityMeter : MonoBehaviour
+public class MeasureDistance : MonoBehaviour
 {
 	public Camera cam;
 	private GameObject target;
@@ -21,6 +21,7 @@ public class FrameQualityMeter : MonoBehaviour
                 LowMedHigh[2].color = high;
         }
     }
+
 
     public void SetQuality(Vuforia.ImageTargetBuilder.FrameQuality quality)
     {
@@ -43,7 +44,7 @@ public class FrameQualityMeter : MonoBehaviour
 	void Update()
 	{
 		if (!target) {
-			target = GameObject.Find ("UserDefinedTarget-1");
+			target = GameObject.Find ("USERTARGET");
 		}
 		if (target) {
 			//calculat distance between camera and user defined target

@@ -7,36 +7,23 @@ using Vuforia;
 
 public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
 {
-    #region PUBLIC_MEMBERS
     /// <summary>
     /// Can be set in the Unity inspector to reference an ImageTargetBehaviour 
     /// that is instantiated for augmentations of new User-Defined Targets.
     /// </summary>
     public ImageTargetBehaviour ImageTargetTemplate;
 
-    public int LastTargetIndex
-    {
-        get { return (m_TargetCounter - 1) % MAX_TARGETS; }
-    }
-    #endregion PUBLIC_MEMBERS
-
-
-    #region PRIVATE_MEMBERS
-    const int MAX_TARGETS = 5;
     UserDefinedTargetBuildingBehaviour m_TargetBuildingBehaviour;
+	//Quality dialog message
     QualityDialog m_QualityDialog;
     ObjectTracker m_ObjectTracker;
-    FrameQualityMeter m_FrameQualityMeter;
+	MeasureDistance measureDistance;
 
     // DataSet that newly defined targets are added to
     DataSet m_UDT_DataSet;
 
     // Currently observed frame quality
     ImageTargetBuilder.FrameQuality m_FrameQuality = ImageTargetBuilder.FrameQuality.FRAME_QUALITY_NONE;
-
-    // Counter used to name newly created targets
-    int m_TargetCounter;
-    #endregion //PRIVATE_MEMBERS
 
 
     #region MONOBEHAVIOUR_METHODS
@@ -50,17 +37,58 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             Debug.Log("Registering User Defined Target event handler.");
         }
 
-        m_FrameQualityMeter = FindObjectOfType<FrameQualityMeter>();
+		measureDistance = FindObjectOfType<MeasureDistance>();
        
         m_QualityDialog = FindObjectOfType<QualityDialog>();
 
         if (m_QualityDialog)
         {
+			//hiding Quality message at the begining if its enabled
             m_QualityDialog.GetComponent<CanvasGroup>().alpha = 0;
         }
     }
     #endregion //MONOBEHAVIOUR_METHODS
 
+//create new target when camera button clicked
+	public void BuildNewTarget()
+	{
+		if (m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_MEDIUM ||
+			m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_HIGH)
+		{
+			// create the name of the next target.
+			// the TrackableName of the original, linked ImageTargetBehaviour is extended with a continuous number to ensure unique names
+			string targetName = "USERTARGET";
+
+			// generate a new target:
+			m_TargetBuildingBehaviour.BuildNewTarget(targetName, ImageTargetTemplate.GetSize().x);
+		}
+		else
+		{
+			Debug.Log("Cannot build new target, due to poor camera image quality");
+			if (m_QualityDialog)
+			{
+				StopAllCoroutines();
+				//showing Quality message for a sertain time buy StartCoroutine
+				m_QualityDialog.GetComponent<CanvasGroup>().alpha = 1;
+				StartCoroutine(FadeOutQualityDialog());
+			}
+		}
+	}
+		
+	IEnumerator FadeOutQualityDialog()
+	{
+		yield return new WaitForSeconds(1f);
+		CanvasGroup canvasGroup = m_QualityDialog.GetComponent<CanvasGroup>();
+
+		for (float f = 1f; f >= 0; f -= 0.1f)
+		{
+			f = (float)Math.Round(f, 1);
+			Debug.Log("FadeOut: " + f);
+			canvasGroup.alpha = (float)Math.Round(f, 1);
+			yield return null;
+		}
+	}
+		
 
     #region IUserDefinedTargetEventHandler Implementation
     /// <summary>
@@ -78,7 +106,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
     }
 
     /// <summary>
-    /// Updates the current frame quality
+    /// Updates the current frame quality and calls measureDistance
     /// </summary>
     public void OnFrameQualityChanged(ImageTargetBuilder.FrameQuality frameQuality)
     {
@@ -89,108 +117,54 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
             Debug.Log("Low camera image quality");
         }
 
-        m_FrameQualityMeter.SetQuality(frameQuality);
+		measureDistance.SetQuality(frameQuality);
     }
 
     /// <summary>
     /// Takes a new trackable source and adds it to the dataset
     /// This gets called automatically as soon as you 'BuildNewTarget with UserDefinedTargetBuildingBehaviour
     /// </summary>
-    public void OnNewTrackableSource(TrackableSource trackableSource)
-    {
-        m_TargetCounter++;
+	public void OnNewTrackableSource(TrackableSource trackableSource)
+	{
 
-        // Deactivates the dataset first
-        m_ObjectTracker.DeactivateDataSet(m_UDT_DataSet);
+		// Deactivates the dataset first
+		m_ObjectTracker.DeactivateDataSet(m_UDT_DataSet);
 
-        // Destroy the oldest target if the dataset is full or the dataset 
-        // already contains five user-defined targets.
-        if (m_UDT_DataSet.HasReachedTrackableLimit() || m_UDT_DataSet.GetTrackables().Count() >= MAX_TARGETS)
-        {
-            IEnumerable<Trackable> trackables = m_UDT_DataSet.GetTrackables();
-            Trackable oldest = null;
-            foreach (Trackable trackable in trackables)
-            {
-                if (oldest == null || trackable.ID < oldest.ID)
-                    oldest = trackable;
-            }
+		// Destroy the oldest target in the dataset if a new target is created 
+		IEnumerable<Trackable> trackables = m_UDT_DataSet.GetTrackables();
+		Trackable oldest = null;
+		//fetch for the last target to destroy it
+		foreach (Trackable trackable in trackables)
+		{
+			if (oldest == null || trackable.ID < oldest.ID)
+				oldest = trackable;
+		}
+		if (oldest != null)
+		{
+			Debug.Log("Destroying oldest trackable in UDT dataset: " + oldest.Name);
+			m_UDT_DataSet.Destroy(oldest, true);
+		}
 
-            if (oldest != null)
-            {
-                Debug.Log("Destroying oldest trackable in UDT dataset: " + oldest.Name);
-                m_UDT_DataSet.Destroy(oldest, true);
-            }
-        }
 
-        // Get predefined trackable and instantiate it
-        ImageTargetBehaviour imageTargetCopy = Instantiate(ImageTargetTemplate);
-        imageTargetCopy.gameObject.name = "UserDefinedTarget-" + m_TargetCounter;
+		// Get predefined trackable and instantiate it
+		ImageTargetBehaviour imageTargetCopy = Instantiate(ImageTargetTemplate);
+		imageTargetCopy.gameObject.name = "USERTARGET";
 
-        // Add the duplicated trackable to the data set and activate it
-        m_UDT_DataSet.CreateTrackable(trackableSource, imageTargetCopy.gameObject);
+		// Add the duplicated trackable to the data set and activate it
+		m_UDT_DataSet.CreateTrackable(trackableSource, imageTargetCopy.gameObject);
 
-        // Activate the dataset again
-        m_ObjectTracker.ActivateDataSet(m_UDT_DataSet);
+		// Activate the dataset again
+		m_ObjectTracker.ActivateDataSet(m_UDT_DataSet);
 
-        m_ObjectTracker.Stop();
-        m_ObjectTracker.ResetExtendedTracking();
-        m_ObjectTracker.Start();
+		m_ObjectTracker.Stop();
+		m_ObjectTracker.ResetExtendedTracking();
+		m_ObjectTracker.Start();
 
-        // Make sure TargetBuildingBehaviour keeps scanning...
-        m_TargetBuildingBehaviour.StartScanning();
-    }
+		// Make sure TargetBuildingBehaviour keeps scanning...
+		m_TargetBuildingBehaviour.StartScanning();
+	}
     #endregion IUserDefinedTargetEventHandler implementation
 
 
-    #region PUBLIC_METHODS
-    /// <summary>
-    /// Instantiates a new user-defined target and is also responsible for dispatching callback to 
-    /// IUserDefinedTargetEventHandler::OnNewTrackableSource
-    /// </summary>
-    public void BuildNewTarget()
-    {
-        if (m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_MEDIUM ||
-            m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_HIGH)
-        {
-            // create the name of the next target.
-            // the TrackableName of the original, linked ImageTargetBehaviour is extended with a continuous number to ensure unique names
-            string targetName = string.Format("{0}-{1}", ImageTargetTemplate.TrackableName, m_TargetCounter);
-
-            // generate a new target:
-            m_TargetBuildingBehaviour.BuildNewTarget(targetName, ImageTargetTemplate.GetSize().x);
-        }
-        else
-        {
-            Debug.Log("Cannot build new target, due to poor camera image quality");
-            if (m_QualityDialog)
-            {
-                StopAllCoroutines();
-                m_QualityDialog.GetComponent<CanvasGroup>().alpha = 1;
-                StartCoroutine(FadeOutQualityDialog());
-            }
-        }
-    }
-
-    #endregion //PUBLIC_METHODS
-
-
-    #region PRIVATE_METHODS
-
-    IEnumerator FadeOutQualityDialog()
-    {
-        yield return new WaitForSeconds(1f);
-        CanvasGroup canvasGroup = m_QualityDialog.GetComponent<CanvasGroup>();
-
-        for (float f = 1f; f >= 0; f -= 0.1f)
-        {
-            f = (float)Math.Round(f, 1);
-            Debug.Log("FadeOut: " + f);
-            canvasGroup.alpha = (float)Math.Round(f, 1);
-            yield return null;
-        }
-    }
-
-  
-
-    #endregion //PRIVATE_METHODS
+ 
 }

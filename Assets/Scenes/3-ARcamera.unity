@@ -1551,6 +1551,7 @@ GameObject:
   - component: {fileID: 1341874930}
   - component: {fileID: 1341874929}
   - component: {fileID: 1341874928}
+  - component: {fileID: 1341874931}
   m_Layer: 0
   m_Name: LowImageQualityMsg
   m_TagString: Untagged
@@ -1671,6 +1672,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &1341874931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1341874923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0e102a3729cca428b2f77dfe975d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1447566098
 GameObject:
   m_ObjectHideFlags: 0
