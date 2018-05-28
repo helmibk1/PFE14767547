@@ -55,6 +55,7 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
 		if (m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_MEDIUM ||
 			m_FrameQuality == ImageTargetBuilder.FrameQuality.FRAME_QUALITY_HIGH)
 		{
+			measureDistance.buildButtonClicked ();
 			// create the name of the next target.
 			// the TrackableName of the original, linked ImageTargetBehaviour is extended with a continuous number to ensure unique names
 			string targetName = "USERTARGET";
@@ -149,7 +150,6 @@ public class UDTEventHandler : MonoBehaviour, IUserDefinedTargetEventHandler
 		// Get predefined trackable and instantiate it
 		ImageTargetBehaviour imageTargetCopy = Instantiate(ImageTargetTemplate);
 		imageTargetCopy.gameObject.name = "USERTARGET";
-
 		// Add the duplicated trackable to the data set and activate it
 		m_UDT_DataSet.CreateTrackable(trackableSource, imageTargetCopy.gameObject);
 

@@ -72,16 +72,7 @@ public class Menu : MonoBehaviour
 			AboutTitle.text ="Guide";
 			AboutDescription.text ="test";
 			break;
-		case ("SaveResult"):
-			AboutButton.SetActive (false);
-			AboutTitle.text ="Save Result";
-			AboutDescription.text ="test";
-			break;
-		case ("ShareResult"):
-			AboutButton.SetActive (false);
-			AboutTitle.text ="Share Result";
-			AboutDescription.text ="test";
-			break;
+
 		case ("Credit"):
 			AboutButton.SetActive (false);
 			AboutTitle.text ="Credit";

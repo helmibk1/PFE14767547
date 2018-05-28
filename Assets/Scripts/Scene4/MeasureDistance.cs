@@ -1,13 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System;
 
 public class MeasureDistance : MonoBehaviour
 {
+	
+	public static bool reset = false;
+	public  GameObject resetButton;
+	public GameObject distancePanel;
+	public GameObject stopDistance;
+	public GameObject buildPanel;
 	public Camera cam;
 	private GameObject target;
     public Image[] LowMedHigh;
 	private float distance;
+	private Double douDistance;
 	public Text distanceText;
+
 
 
 	//called in SetQuality to change UI bar color
@@ -43,6 +53,53 @@ public class MeasureDistance : MonoBehaviour
                 break;
         }
     }
+
+
+	//build button click
+	public void buildButtonClicked()
+	{		
+			
+			distancePanel.SetActive (true);
+			buildPanel.SetActive (false);
+			stopDistance.SetActive (true);
+
+	}
+	// stop button click
+	public void DistanceMeasureStop()
+	{
+		stopDistance.SetActive (false);
+		//this variable used in the drawlines script to allow drowing lines
+		resetButton.SetActive (true);
+		distancePanel.SetActive (false);
+
+			reset = true;
+
+	}
+
+
+	//reset drawing button click
+	public void Reset(){
+		
+		GameObject line = GameObject.Find ("LinePrefab(Clone)");
+		if (line != null) {
+			reset=true;
+			Destroy (line.gameObject);
+		}
+		else {
+			distancePanel.SetActive (false);
+			buildPanel.SetActive (true);
+			stopDistance.SetActive (false);
+			resetButton.SetActive (false);
+			distanceText.text = "0 \n cm";
+			GameObject target = GameObject.Find ("USERTARGET");
+			target.SetActive (false);
+			reset=false;
+
+		}
+
+
+	}
+
 	void Update()
 	{
 		if (!target) {
@@ -51,7 +108,12 @@ public class MeasureDistance : MonoBehaviour
 		if (target) {
 			//calculat distance between camera and user defined target
 			distance = Vector3.Distance (cam.transform.position, target.transform.position);
-			distanceText.text = distance.ToString() +" \n cm";
+			distance = distance * 13;
+			douDistance = Math.Round (distance);
+			distanceText.text = douDistance.ToString() +" \n cm";
+
+
+
 
 
 		}
